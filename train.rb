@@ -14,11 +14,15 @@ class Train
 		@x_scale = @width.to_f / @img.width.to_f
 		@y_scale = @height.to_f / @img.width.to_f
 
-		@actionStack = Array.new();
-		@actionStack.push(:moveLeft)
-		@actionStack.push(:moveDown)
+		@actionQueue = Array.new();
 
-		#@currentTile = self.send(@actionStack.pop())
+		addAction(:moveLeft)
+		addAction(:moveRight)
+		addAction(:moveUp)
+		# @actionQueue.push(:moveLeft)
+		# @actionQueue.push(:moveDown)
+
+		#@currentTile = self.send(@actionQueue.pop())
 		puts @currentTile
 
 
@@ -56,13 +60,17 @@ class Train
 				@y += 1
 			end
 		else
-			nextAction = @actionStack.pop
+			nextAction = @actionQueue.pop
 			if nextAction != nil then
 				@currentTile = self.send nextAction
 			end
 			#puts @currentTile
 		end
 
+	end
+
+	def addAction(action)
+		@actionQueue.insert(0, action)
 	end
 
 	def moveUp
