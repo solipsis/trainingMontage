@@ -1,10 +1,10 @@
 class Card
-	def initialize(train)
-		@train = train
-	end
+	
+	attr_accessor :action
 
-	def action
-
+	def initialize(action, img)
+		@action = action
+		@img = img
 	end
 end
 
@@ -24,7 +24,7 @@ end
 
 class RightCard < Card
 
-	def action
+	def act
 		train.moveRight()
 	end
 end

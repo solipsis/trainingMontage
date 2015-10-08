@@ -7,6 +7,8 @@ require_relative 'card'
 require_relative 'train'
 require_relative 'grid'
 require_relative 'mapTile'
+require_relative 'deck'
+require_relative 'player'
 
 class GameWindow < Gosu::Window
 
@@ -21,6 +23,12 @@ class GameWindow < Gosu::Window
 
 		@grid = Grid.new(10, 10, @tileImg)
 		@train1 = Train.new(@trainImg, @grid)
+
+		@deck = Deck.new()
+		testPlayer = Player.new(@deck)
+
+		puts "player made"
+		puts testPlayer.hand
 	end
 
 	def update
