@@ -48,6 +48,8 @@ class Grid
 			if (tile_x+1 >= @numRows) then return nil else return @tiles[tile_x+1][tile_y] end
 		when :left
 			if (tile_x-1 < 0) then return nil else return @tiles[tile_x-1][tile_y] end
+		when :here
+			return @tiles[tile_x][tile_y]
 
 
 

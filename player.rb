@@ -7,7 +7,7 @@ class Player
 		@gameWindow = gameWindow
 		trainImg = Gosu::Image.new(gameWindow, "circle_icon.png", false)
 
-		@train = Train.new(trainImg, @grid)
+		@train = Train.new(trainImg, @grid, self)
 		@hand = Array.new()
 		@score = 0
 		@deck = deck

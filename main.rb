@@ -24,7 +24,7 @@ class GameWindow < Gosu::Window
 
 
 		@grid = Grid.new(10, 10, @tileImg)
-		#@train1 = Train.new(@trainImg, @grid)
+		@font = Gosu::Font.new(self, Gosu::default_font_name, 30)
 
 		@deck = Deck.new()
 		@testPlayer = Player.new(@deck, @grid, self)
@@ -46,6 +46,7 @@ class GameWindow < Gosu::Window
 		@fpscounter.draw
 		@grid.draw
 		@testPlayer.train.draw
+		@font.draw("score:" + @testPlayer.score.to_s, 100, 100, 30)
 	end
 
 end

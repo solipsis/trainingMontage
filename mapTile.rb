@@ -33,7 +33,7 @@ class MapTile
 	end
 
 	def addPeople
-		20.times do |x|
+		100.times do |x|
 			@people.push(Person.new(self, @img))
 		end
 	end

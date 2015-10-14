@@ -4,16 +4,18 @@ class Train < Entity
 
 	attr_accessor :x, :y, :width, :height
 
-	def initialize(img, grid)
+	def initialize(img, grid, player)
 		@x = 300
 		@y = 300
 		@width = 50
 		@height = 50
 		@img = img
+		@player = player
 
 		@grid = grid
 		#puts @grid.tile
 		@currentTile = @grid.tiles[2][2]
+		@previousTile = @currentTile
 
 		@x_scale = @width.to_f / @img.width.to_f
 		@y_scale = @height.to_f / @img.width.to_f
@@ -45,10 +47,24 @@ class Train < Entity
 			return
 		end
 
+		to_delete = Array.new()
+
+
 		@currentTile.people.each do |person|
-			if (person.intersects?(self))
-				puts "yay"
+			if (self.intersects?(person))
+				@player.score += 10
+				to_delete.push(person)
 			end
+		end
+		@previousTile.people.each do |person|
+			if (self.intersects?(person))
+				@player.score += 10
+				to_delete.push(person)
+			end
+		end
+		to_delete.each do |person|
+			@currentTile.people.delete(person)
+			@previousTile.people.delete(person)
 		end
 
 		x_diff = @x - @currentTile.x
@@ -57,19 +73,19 @@ class Train < Entity
 		if (x_diff.abs > 2 || y_diff.abs > 2) then
 
 			if (x_diff > 2) then
-				@x -= 0.5
+				@x -= 0.2
 			end
 
 			if (x_diff < -2) then
-				@x += 0.5
+				@x += 0.2
 			end
 
 			if (y_diff > 2) then
-				@y -= 0.5
+				@y -= 0.2
 			end
 
 			if (y_diff < -2) then
-				@y += 0.5
+				@y += 0.2
 			end
 		else
 			nextAction = @actionQueue.pop
@@ -77,6 +93,7 @@ class Train < Entity
 			puts nextAction
 
 			if nextAction != nil then
+				@previousTile = @grid.getTile(@currentTile, :here)
 				@currentTile = self.send nextAction
 				if (@currentTile == nil)
 					puts "boom" 

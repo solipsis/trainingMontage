@@ -23,14 +23,14 @@ class Person < Entity
 	end
 
 	def draw
-		@img.draw_rot(@x, @y, 1, 0, 0.5, 0.5, @x_scale, @y_scale)
+		@img.draw_rot(@x, @y, 1, 0, 1, 1, @x_scale, @y_scale)
 	end
 
 	def update
 	#	puts "update"
 
-		x = @x + rand(-2..2) 
-		y = @y + rand(-2..2)
+		x = @x + rand(-0.2..0.2) 
+		y = @y + rand(-0.2..0.2)
 
 		if (x > @max_x || x < @min_x) 
 			x = @x
