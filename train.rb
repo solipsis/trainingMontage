@@ -16,9 +16,10 @@ class Train
 
 		@actionQueue = Array.new();
 
-		addAction(:moveLeft)
-		addAction(:moveRight)
-		addAction(:moveUp)
+
+		#addAction(:moveLeft)
+		#addAction(:moveRight)
+		#addAction(:moveUp)
 		# @actionQueue.push(:moveLeft)
 		# @actionQueue.push(:moveDown)
 
@@ -73,6 +74,12 @@ class Train
 		@actionQueue.insert(0, action)
 	end
 
+	def createActionQueue(hand)
+		hand.each do |card|
+			@actionQueue.insert(0, card.action)
+		end
+	end
+
 	def moveUp
 		return @grid.getTile(@currentTile, :up)
 	end
@@ -91,5 +98,7 @@ class Train
 
 	def crash
 	end
+
+	
 
 end

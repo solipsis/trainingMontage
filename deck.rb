@@ -14,18 +14,21 @@ class Deck
 
 		# todo fix
 		straight1_img = nil
+		straight2_img = nil
+		right_img = nil
+
 		STRAIGHT_1.times do
 			puts "adding card"
 			cards.push(Card.new(:straight1, straight1_img))
 		end
 
-		# STRAIGHT_2.times do
-		# 	cards.push(Card.new(:straight2, straight2_img))
-		# end
+		STRAIGHT_2.times do
+		 	cards.push(Card.new(:straight2, straight2_img))
+		end
 
-		# RIGHT.times do
-		# 	cards.push(Card.new(:right, right_img))
-		# end
+		RIGHT.times do
+		 	cards.push(Card.new(:right, right_img))
+		end
 
 		puts "deck initialized"
 

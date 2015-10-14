@@ -6,6 +6,10 @@ class Card
 		@action = action
 		@img = img
 	end
+
+	def to_s
+		puts @action
+	end 
 end
 
 class UpCard < Card
