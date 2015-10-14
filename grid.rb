@@ -64,4 +64,12 @@ class Grid
 		end
 	end
 
+	def update
+		for i in 0...@numRows do
+			for j in 0...@numCols do
+				@tiles[i][j].update
+			end
+		end
+	end
+
 end

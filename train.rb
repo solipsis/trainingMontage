@@ -1,4 +1,8 @@
-class Train
+require_relative 'entity'
+
+class Train < Entity
+
+	attr_accessor :x, :y, :width, :height
 
 	def initialize(img, grid)
 		@x = 300
@@ -39,6 +43,12 @@ class Train
 			#moveDown()
 			#crash
 			return
+		end
+
+		@currentTile.people.each do |person|
+			if (person.intersects?(self))
+				puts "yay"
+			end
 		end
 
 		x_diff = @x - @currentTile.x

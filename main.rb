@@ -9,6 +9,8 @@ require_relative 'grid'
 require_relative 'mapTile'
 require_relative 'deck'
 require_relative 'player'
+require_relative 'person'
+require_relative 'entity'
 
 class GameWindow < Gosu::Window
 
@@ -37,6 +39,7 @@ class GameWindow < Gosu::Window
 	def update
 		@fpscounter.update
 		@testPlayer.train.update
+		@grid.update
 	end
 
 	def draw
