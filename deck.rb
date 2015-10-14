@@ -16,6 +16,7 @@ class Deck
 		straight1_img = nil
 		straight2_img = nil
 		right_img = nil
+		left_img = nil
 
 		STRAIGHT_1.times do
 			puts "adding card"
@@ -23,11 +24,15 @@ class Deck
 		end
 
 		STRAIGHT_2.times do
-		 	cards.push(Card.new(:straight2, straight2_img))
+			cards.push(Card.new(:straight2, straight2_img))
 		end
 
 		RIGHT.times do
 		 	cards.push(Card.new(:right, right_img))
+		end
+
+		LEFT.times do
+			cards.push(Card.new(:left, left_img))
 		end
 
 		puts "deck initialized"

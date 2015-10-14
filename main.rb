@@ -49,7 +49,7 @@ end
 
 GameWindow.new.show()
 
-you can do it. Try to get 2 chunks done each hour
+#you can do it. Try to get 2 chunks done each hour
 
 # todo
 # implement train direction and relative left/right @10am
